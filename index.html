@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六安瓜片区块链溯源平台 - 喝真的六安瓜片</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入 FontAwesome 用于图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo"><i class="fas fa-leaf"></i> 六安瓜片·真品溯源</a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#mall">真品商城</a></li>
+                <li><a href="#trace">溯源查询</a></li>
+                <li><a href="#legal">法律保障</a></li>
+                <li><a href="#story">品牌故事</a></li>
+                <li><a href="#user">用户中心</a></li>
+                <li><a href="admin.html" class="btn-login">茶农/合作社登录</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页 Hero 区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>区块链司法存证，喝真的六安瓜片</h1>
+            <p>每一片茶叶都有它的“数字身份证”，全程留痕，司法可追溯。</p>
+            <div class="hero-actions">
+                <a href="#trace" class="btn btn-primary"><i class="fas fa-qrcode"></i> 立即验真</a>
+                <a href="#mall" class="btn btn-outline">浏览真品</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <!-- 模拟验真动画效果 -->
+            <div class="scan-animation">
+                <div class="scan-line"></div>
+                <i class="fas fa-qrcode fa-5x"></i>
+                <p>正在从区块链读取数据...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 真品商城 -->
+    <section id="mall" class="section">
+        <div class="container">
+            <h2 class="section-title">真品商城 <span class="badge">区块链溯源</span></h2>
+            <div class="filters">
+                <button class="filter-btn active">全部</button>
+                <button class="filter-btn">特级</button>
+                <button class="filter-btn">一级</button>
+                <button class="filter-btn">礼盒装</button>
+            </div>
+            <div class="product-grid" id="product-list">
+                <!-- 产品卡片将通过 JS 动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 溯源查询 -->
+    <section id="trace" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">全链路溯源查询</h2>
+            <div class="trace-box">
+                <input type="text" id="trace-code-input" placeholder="请输入16位溯源码或扫描二维码">
+                <button onclick="queryTrace()" class="btn btn-primary">查询</button>
+            </div>
+            
+            <!-- 溯源结果展示区域 (默认隐藏) -->
+            <div id="trace-result" class="trace-result hidden">
+                <div class="blockchain-proof">
+                    <i class="fas fa-shield-alt text-success"></i>
+                    <span>本溯源信息已通过区块链存证，具备法律证据效力 (哈希值: 0x7f...3a2b)</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-seedling"></i></div>
+                        <div class="timeline-content">
+                            <h3>原产地采摘</h3>
+                            <p>地点：六安市独山镇核心产区</p>
+                            <p>茶农：张三 (已实名认证)</p>
+                            <p class="time">2023-04-15 08:30:00</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-fire"></i></div>
+                        <div class="timeline-content">
+                            <h3>传统工艺加工</h3>
+                            <p>工序：拉老火 (非遗传承人监制)</p>
+                            <p class="time">2023-04-16 14:20:00</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-flask"></i></div>
+                        <div class="timeline-content">
+                            <h3>质量检测</h3>
+                            <p>结果：合格 (农残检测通过)</p>
+                            <a href="#" class="link">查看PDF报告</a>
+                            <p class="time">2023-04-18 09:00:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="map-container" class="map-placeholder">
+                    [地图轨迹展示：六安 -> 合肥 -> 您的手中]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 法律保障 -->
+    <section id="legal" class="section">
+        <div class="container">
+            <h2 class="section-title">法律保障与维权</h2>
+            <div class="legal-grid">
+                <div class="legal-card">
+                    <i class="fas fa-link"></i>
+                    <h3>区块链存证</h3>
+                    <p>数据上链不可篡改，直接对接互联网法院。</p>
+                </div>
+                <div class="legal-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>司法证据效力</h3>
+                    <p>电子证据符合《电子签名法》，一键出证。</p>
+                </div>
+                <div class="legal-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>消费者维权</h3>
+                    <p>发现假货？点击下方按钮一键发起维权投诉。</p>
+                    <button class="btn btn-sm btn-danger">维权通道</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌故事 -->
+    <section id="story" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">品牌故事与乡村振兴</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>一片叶子，富了一方百姓</h3>
+                    <p>六安瓜片是国家级非物质文化遗产。我们通过数字化手段，不仅保护了品牌，更让每一位辛勤劳作的茶农获得应有的回报。</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://via.placeholder.com/400x300?text=Tea+Garden" alt="茶园风光">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 六安瓜片区块链溯源平台 | 技术支持：某某科技</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
