@@ -1,9 +1,9 @@
 // 模拟商品数据
 const products = [
-    { id: 1, name: "特级六安瓜片-明前茶", price: "￥880", traceId: "LA2024001" },
-    { id: 2, name: "一级六安瓜片-雨前茶", price: "￥450", traceId: "LA2024002" },
-    { id: 3, name: "六安瓜片精美礼盒", price: "￥1280", traceId: "LA2024003" },
-    { id: 4, name: "口粮茶-实惠装", price: "￥120", traceId: "LA2024004" }
+    { id: 1, name: "精品礼盒", image: "pic/精品礼盒.jpg", traceId: "LA2024003" },
+    { id: 2, name: "口粮散茶", image: "pic/口粮散茶.png", traceId: "LA2024004" },
+    { id: 3, name: "特级茶", image: "pic/特级茶.png", traceId: "LA2024001" },
+    { id: 4, name: "一级", image: "pic/一级.png", traceId: "LA2024002" }
 ];
 
 // 页面加载完成后执行
@@ -22,11 +22,10 @@ function loadProducts() {
         card.innerHTML = `
             <div class="product-img">
                 <span class="badge-trace"><i class="fas fa-link"></i> 区块链溯源</span>
-                <img src="https://via.placeholder.com/200?text=Tea+Image" alt="${product.name}" style="max-width:80%;">
+                <img src="${product.image}" alt="${product.name}">
             </div>
             <div class="product-info">
                 <h4>${product.name}</h4>
-                <div class="product-price">${product.price}</div>
                 <button class="btn btn-sm btn-outline" style="color:#333; border-color:#ddd; margin-top:10px;" onclick="previewTrace('${product.traceId}')">
                     <i class="fas fa-eye"></i> 查看溯源信息
                 </button>

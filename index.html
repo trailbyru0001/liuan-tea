@@ -16,12 +16,12 @@
             <a href="#" class="logo"><i class="fas fa-leaf"></i> 六安瓜片·真品溯源</a>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
-                <li><a href="#mall">真品商城</a></li>
+                <li><a href="#mall">已区块链溯源的商品展览</a></li>
                 <li><a href="#trace">溯源查询</a></li>
                 <li><a href="#legal">法律保障</a></li>
                 <li><a href="#story">品牌故事</a></li>
                 <li><a href="#user">用户中心</a></li>
-                <li><a href="admin.html" class="btn-login">茶农/合作社登录</a></li>
+                <li><a href="admin.html" class="btn-login">茶农/合作社/消费者登录</a></li>
             </ul>
         </div>
     </nav>
@@ -49,7 +49,7 @@
     <!-- 真品商城 -->
     <section id="mall" class="section">
         <div class="container">
-            <h2 class="section-title">真品商城 <span class="badge">区块链溯源</span></h2>
+            <h2 class="section-title">已区块链溯源的商品展览 <span class="badge">区块链溯源</span></h2>
             <div class="filters">
                 <button class="filter-btn active">全部</button>
                 <button class="filter-btn">特级</button>
@@ -118,20 +118,79 @@
             <h2 class="section-title">法律保障与维权</h2>
             <div class="legal-grid">
                 <div class="legal-card">
-                    <i class="fas fa-link"></i>
-                    <h3>区块链存证</h3>
-                    <p>数据上链不可篡改，直接对接互联网法院。</p>
+                    <i class="fas fa-file-contract"></i>
+                    <h3>合同模板与智能分析</h3>
+                    <p>常见的合同模板与说明：围绕农业种植、销售、电商代经营等高风险环节，结合国家市场监管总局规范文本与茶叶特性，提供标准化模板，便于多元主体使用。以下模板可直接下载：</p>
+                    <div class="template-links">
+                        <a href="doc/农村土地经营权出租合同示范文本.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 农村土地经营权流转</a>
+                        <a href="doc/区块链溯源数据合规协议（示范文本）.docx" target="_blank"><i class="fas fa-file-word"></i> 区块链溯源数据合规</a>
+                        <a href="doc/《农副产品买卖合同（示范文本）》（GF—2025.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 农副产品买卖</a>
+                        <a href="doc/安徽省电商平台服务合同（示范文本）.docx" target="_blank"><i class="fas fa-file-word"></i> 电商平台服务</a>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <p><strong>智能缔约辅助工具</strong>：上传合同后识别不公平条款</p>
+                        <input type="file" id="contract-upload" accept=".doc,.docx,.pdf">
+                        <button class="btn btn-sm" onclick="analyzeContract()">识别不公平条款</button>
+                        <div id="contract-risk" class="hint"></div>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <p><strong>违约情形识别与赔偿计算辅助</strong></p>
+                        <div class="inline-fields">
+                            <label>违约类型
+                                <select id="breach-type">
+                                    <option value="undelivered">未交付</option>
+                                    <option value="quality">质量不符</option>
+                                    <option value="latepay">付款延迟</option>
+                                </select>
+                            </label>
+                            <input type="number" id="contract-amount" placeholder="合同总价(元)">
+                            <input type="number" id="delivered-amount" placeholder="已交付金额(元)">
+                            <input type="number" id="penalty-rate" placeholder="违约金比例% 或 日利率‰">
+                            <input type="date" id="sign-date" title="合同签订日期">
+                            <input type="date" id="breach-date" title="违约发生日期">
+                            <input type="number" id="overdue-days" placeholder="逾期天数(仅延迟)">
+                            <button class="btn btn-sm" onclick="calcDamages()">计算</button>
+                        </div>
+                        <div id="calc-result" class="hint"></div>
+                    </div>
                 </div>
                 <div class="legal-card">
-                    <i class="fas fa-gavel"></i>
-                    <h3>司法证据效力</h3>
-                    <p>电子证据符合《电子签名法》，一键出证。</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>销售证据留存与安全指引</h3>
+                    <div>
+                        <p><strong>售前全景存证</strong>：建议在购买前对包含商品描述、价格、承诺等信息的完整页面进行截图，生成带不可篡改时间戳与访问地址的电子证据包，防止商家事后修改信息。</p>
+                        <p><strong>支付环节安全指引</strong></p>
+                        <ol style="padding-left:18px; margin-top:6px;">
+                            <li>请确认支付链接为官方域名；</li>
+                            <li>强烈建议使用平台担保交易，切勿向任何个人账户直接转账；</li>
+                            <li>保存好支付凭证。</li>
+                        </ol>
+                        <div style="margin-top:8px;">
+                            <p><strong>售后全流程维权指引</strong></p>
+                            <p><strong>第一步：</strong>请描述大致案情，明晰案件性质，获得证据收集指引；已接入法务助手，正在进行初步风险分析与权利评估中...</p>
+                            <p><strong>第二步：</strong>选择维权路径（建议顺序：先尝试协商；协商不成→向平台/主管部门投诉或申请调解；涉及违法线索走行政投诉；证据充分时提起司法救济）。</p>
+                            <div class="flow-steps">
+                                <a href="#" class="step">协商</a>
+                                <a href="#" class="step">调解</a>
+                                <a href="#" class="step">行政投诉</a>
+                                <a href="#" class="step">司法救济</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="legal-card">
-                    <i class="fas fa-user-shield"></i>
-                    <h3>消费者维权</h3>
-                    <p>发现假货？点击下方按钮一键发起维权投诉。</p>
-                    <button class="btn btn-sm btn-danger">维权通道</button>
+                    <i class="fas fa-copyright"></i>
+                    <h3>知识产权确权与侵权分析</h3>
+                    <ul>
+                        <li><strong>商标</strong>：申请周期约6-9个月初审、12-18个月核准；保护期10年，可续展；官方规费约300元/类（以主管部门公告为准）。</li>
+                        <li><strong>专利</strong>：发明2-3年、实用新型6-12个月、外观6-10个月；保护期分别20/10/15年；包含申请费与年费，按类别不同。</li>
+                        <li><strong>著作权</strong>：登记约1-3个月；保护期通常为作者终身+50年（单位作品自首次发表起50年）；登记费一般数百元。</li>
+                        <li><strong>地理标志</strong>：GI商标/保护产品等路径；周期约12-24个月；商标方式保护期10年，可续展；费用按路径收取。</li>
+                    </ul>
+                    <p><strong>侵权比对智能辅助</strong></p>
+                    <p><strong>赔偿辅助计算与维权流程指引（行政举报与诉讼）</strong></p>
                 </div>
             </div>
         </div>
@@ -147,7 +206,12 @@
                     <p>六安瓜片是国家级非物质文化遗产。我们通过数字化手段，不仅保护了品牌，更让每一位辛勤劳作的茶农获得应有的回报。</p>
                 </div>
                 <div class="story-image">
-                    <img src="https://via.placeholder.com/400x300?text=Tea+Garden" alt="茶园风光">
+                    <div class="gallery-grid">
+                        <img src="pic/cha1.png" alt="茶园风光1">
+                        <img src="pic/cha2.png" alt="茶园风光2">
+                        <img src="pic/cha3.png" alt="茶园风光3">
+                        <img src="pic/cha5.png" alt="茶园风光4">
+                    </div>
                 </div>
             </div>
         </div>
